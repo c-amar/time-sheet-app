@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.modal-body{
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 40px;
+    column-count: 2;
+    column-gap: 20px;
+    
+}
+ .inline-wrapper .modal-body {
+  display: -webkit-inline-box;
+  margin-left: 90px
+}
+
+/* button.download-wrapper{
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+button.download-wrapper:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+} */

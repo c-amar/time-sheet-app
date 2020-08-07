@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load render_table from django_tables2 %}
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'jd_timesheet' %}">Timesheet</a></li>
+<li class="breadcrumb-item active"><a href="{% url 'jd_tasklist' timesheet1.pk %}">{{ timesheet1.timesheet_date }}</a></li>
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/timesheet.js' %}"></script>
+{% endblock %}
+{% block css_include %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/timesheet.css' %}">
+{% endblock %}
+{% block content %}
+<form method="get">
+    {% csrf_token %}
+    <div class="well">
+        <div class="row">
+            <div class="form-group col-md-2 mb-0">
+                {% if timesheet1.is_saved  %} 
+                <button type="button" class="btn btn-primary disabled">
+                {% else %}
+                <button type="button" class="btn btn-primary js-add-task" data-url="{% url 'addTaskView' timesheet1.pk %}">
+                {% endif %}
+                <span class="glyphicon glyphicon-plus"></span>Add Task
+                </button>
+            </div>
+            {% if timesheet1.is_saved  %} 
+            <a href="{% url 'saveView' timesheet1.pk %}" class="btn btn-info disabled" role="button">Submit</a>
+            {% else %}
+            <a href="{% url 'saveView' timesheet1.pk %}" class="btn btn-info" role="button">Submit</a>
+            {% endif %}
+        </div>
+    </div>
+</form>
+    <br>
+    <div id="refresh-table" class="table-wrapper">
+        {% render_table table_tasklist %}
+    </div>
+<div class="modal fade" id="modal-timesheet">
+<div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+</div>
+{% endblock %}

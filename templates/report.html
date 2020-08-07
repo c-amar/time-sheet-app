@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'jd_timesheet' %}">Timesheet</a></li>
+<li class="breadcrumb-item active"><a href="{% url 'reportView' %}">Report</a></li>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static 'js/timesheet.js' %}"></script>
+{% endblock %}
+
+{% block css_include %}
+<link rel="stylesheet" href="{% static 'css/timesheet.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% endblock %}
+
+{% block content %}
+   <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Date</th>
+        <th>Assigned By</th>
+        <th>Task</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasklist %}
+        <tr>
+          <td>
+            {{ task.timesheet.timesheet_date }}
+          </td>
+          <td class="align-middle">
+            {{ task.assigned_by }}
+          </td>
+          <td class="align-middle">
+            {{ task.task }}
+          </td>
+          <td class="align-middle">
+            {{ task.timesheet.created_by }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+
+
+

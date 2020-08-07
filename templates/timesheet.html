@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load render_table from django_tables2 %}
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'jd_timesheet' %}">Timesheet</a></li>
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/timesheet.js' %}"></script>
+{% endblock %}
+{% block css_include %}
+<link rel="stylesheet" href="{% static 'css/timesheet.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% endblock %}
+{% block content %}
+<form method="get">
+{% csrf_token %}
+<div class="well">
+    <div class="row">
+        <div class="form-group col-md-2 mb-0">
+            <button type="button" class="btn btn-primary js-add-timesheet" data-url="{% url 'timesheetAddView' %}">
+            <span class="glyphicon glyphicon-plus"></span>Create Timesheet
+            </button>
+        </div>
+    </div>
+</div>
+</form>
+<div id="refresh-table" class="table-wrapper">
+    {% render_table table_timesheet %}
+</div>
+<div class="modal fade" id="modal-timesheet-real">
+<div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+</div>
+</div>
+{% endblock %}
