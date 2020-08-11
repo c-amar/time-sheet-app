@@ -1,3 +1,3 @@
-# time-sheet-app
+# Timesheet
 
 A simple timesheet application based on django. 
